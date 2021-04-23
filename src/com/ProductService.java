@@ -17,8 +17,8 @@ import model.Product;
 public class ProductService {
 	    
 	
-	private Product objProduct;
-	private JsonObject ProJobj;
+	private Product obj_Pro;
+	private JsonObject Pro_JasonObj;
 	
 	
 	       
@@ -28,9 +28,9 @@ public class ProductService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String test()
 	 {
-		objProduct =    new Product();
-		objProduct.test();
-		return "Working!";
+		obj_Pro =    new Product();
+		obj_Pro.test();
+		return " Working!";
 	 
 	 } 
 	
@@ -43,9 +43,9 @@ public class ProductService {
 
 	{
 		//= new Product()
-		objProduct = new Product();
+		obj_Pro = new Product();
 		
-		String result = objProduct.createProduct(p_name, innovator_name, initial_price, stock_amount);
+		String result = obj_Pro.createProduct(p_name, innovator_name, initial_price, stock_amount);
 		return result;
 	}
 	
@@ -57,16 +57,16 @@ public class ProductService {
 	public String updateProduct(String productData) 
 	
 	{
-		ProJobj = new JsonParser().parse(productData).getAsJsonObject();
+		Pro_JasonObj = new JsonParser().parse(productData).getAsJsonObject();
 		
-		int p_id    			= ProJobj.get("p_id").getAsInt();
-		String p_name 			= ProJobj.get("p_name").getAsString();
-		String innovator_name 	= ProJobj.get("innovator_name").getAsString();
-		int initial_price 		= ProJobj.get("initial_price").getAsInt();
-		int stock_amount 		= ProJobj.get("stock_amount").getAsInt();
+		int p_id    			= Pro_JasonObj.get("p_id").getAsInt();
+		String p_name 			= Pro_JasonObj.get("p_name").getAsString();
+		String innovator_name 	= Pro_JasonObj.get("innovator_name").getAsString();
+		int initial_price 		= Pro_JasonObj.get("initial_price").getAsInt();
+		int stock_amount 		= Pro_JasonObj.get("stock_amount").getAsInt();
 		
 		
-		String result = ProJobj.updateProduct(p_id, p_name, innovator_name, initial_price, stock_amount);
+		String result = Pro_JasonObj.updateProduct(p_id, p_name, innovator_name, initial_price, stock_amount);
 		return result;
 	}
 	
@@ -77,12 +77,12 @@ public class ProductService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String deleteProduct(String productId)
 	{
-		objProduct = new Product();
-		ProJobj = new JsonParser().parse(productId).getAsJsonObject();
+		obj_Pro = new Product();
+		Pro_JasonObj = new JsonParser().parse(productId).getAsJsonObject();
 		
-		int p_id = ProJobj.get("p_id").getAsInt();
+		int p_id = Pro_JasonObj.get("p_id").getAsInt();
 		
-		String result = objProduct.deleteProduct(p_id);
+		String result = obj_Pro.deleteProduct(p_id);
 		return result;
 	}
 
