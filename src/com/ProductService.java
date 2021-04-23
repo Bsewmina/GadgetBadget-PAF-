@@ -15,22 +15,22 @@ import model.Product;
 
 @Path("/Product")
 public class ProductService {
-	
+	    
 	
 	private Product objProduct;
 	private JsonObject ProJobj;
 	
 	
-	
+	       
 	
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String test()
 	 {
-		objProduct = new Product();
+		objProduct =    new Product();
 		objProduct.test();
-		return "Working!";
+		return "  Working!";
 	 
 	 } 
 	

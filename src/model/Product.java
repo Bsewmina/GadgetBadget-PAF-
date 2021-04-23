@@ -55,7 +55,7 @@ public class Product {
 			
 		}
 		
-		return "	Data added to the database Successfully! ";
+		return "	   Data added to the database Successfully! ";
 		
 	}
 	
