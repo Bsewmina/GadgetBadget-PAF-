@@ -30,7 +30,7 @@ public class ProductService {
 	 {
 		objProduct =    new Product();
 		objProduct.test();
-		return "  Working!";
+		return "Working!";
 	 
 	 } 
 	
