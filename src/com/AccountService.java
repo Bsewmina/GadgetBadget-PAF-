@@ -25,13 +25,12 @@ public class AccountService {
 	
 	@GET
 	@Path("/")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.TEXT_HTML)
 	public String test()
 	 {
 		objAcc = new Account();
-		objAcc.test();
-		return "Hello world.!";
-	 
+		return objAcc.viewallAccounts();
+		
 	 } 
 	
 	@POST
@@ -42,9 +41,9 @@ public class AccountService {
 							@FormParam ("number") int number, @FormParam ("email") String email, @FormParam ("pass") String pass)
 
 	{
-		//= new Account()
-		objAcc = new Account();
 		
+		objAcc = new Account();
+		//passing and arguments and returning response
 		String result = objAcc.createAccount(fName, lName, gender, number, email, pass);
 		return result;
 	}
@@ -52,24 +51,20 @@ public class AccountService {
 	
 	@PUT
 	@Path("/")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String updateAccount(String accountData) 
+	public String updateAccount(@FormParam ("acc_id") int acc_id,@FormParam ("fName") String fName,@FormParam ("lName") String lName,@FormParam ("gender") String gender,
+								@FormParam ("number") int number,@FormParam ("email") String email,@FormParam ("pass") String pass) 
 	
 	{
-		accJobj = new JsonParser().parse(accountData).getAsJsonObject();
 		
-		int acc_id = accJobj.get("acc_id").getAsInt();
-		String fName = accJobj.get("fName").getAsString();
-		String lName = accJobj.get("lName").getAsString();
-		String gender = accJobj.get("gender").getAsString();
-		int number = accJobj.get("number").getAsInt();
-		String email = accJobj.get("email").getAsString();
-		String pass = accJobj.get("pass").getAsString();
-		
-		String result = objAcc.updateAccount(acc_id, fName, lName, gender, number, email, pass);
-		return result;
+		objAcc = new Account();
+		//passing and arguments and returning response
+		String results = objAcc.updateAccount(acc_id,fName,lName,gender,number,email,pass);
+		return results;
 	}
+		
+		
 	
 	
 	@DELETE
