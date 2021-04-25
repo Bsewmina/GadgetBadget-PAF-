@@ -29,8 +29,9 @@ public class ProjProposalService {
 	public String test()
 	 {
 		objProjProposal = new ProjProposal();
-		objProjProposal.test();
-		return "Hello world.!";
+		
+		return objProjProposal.viewProjProposal();
+		
 	 
 	 } 
 	
@@ -42,7 +43,7 @@ public class ProjProposalService {
 							@FormParam ("proj_description") String proj_description, @FormParam ("requird_budget") String requird_budget, @FormParam ("expected_date") String expected_date)
 
 	{
-		//= new ProjProposal()
+		
 		objProjProposal = new ProjProposal();
 		
 		String result = objProjProposal.createProjProposal(researcher_name, researcher_email, proj_tittle, proj_description, requird_budget, expected_date);
