@@ -24,7 +24,7 @@ public class Product {
 			Connection con = connect();		
 	}
 	
-	public String createProduct(String p_name,String innovator_name,int initial_price,int stock_amount) {
+	public String createProduct(String p_name,String innovator_name,int initial_price,int stock_amount,String product_category) {
 		String result = null;
 		
 		try {
@@ -37,12 +37,13 @@ public class Product {
 			}
 			
 			
-			String sql = "INSERT INTO products VALUES (NULL,?,?,?,?)";
+			String sql = "INSERT INTO products VALUES (NULL,?,?,?,?,?)";
             ps = con.prepareStatement(sql);
             ps.setString(1,p_name);
             ps.setString(2,innovator_name);
             ps.setInt(3,initial_price);
             ps.setInt(4,stock_amount);
+            ps.setString(5,product_category);
           
             
             ps.execute();
@@ -60,7 +61,7 @@ public class Product {
 	}
 	
 	
-	public String updateProduct(int p_id,String p_name,String innovator_name,int initial_price,int stock_amount) {
+	public String updateProduct(int p_id,String p_name,String innovator_name,int initial_price,int stock_amount,String product_category) {
 		
 		String result = null;
 		
@@ -73,7 +74,7 @@ public class Product {
 				return "	Null connection Error !!!";
 			}
 			
-			String sql = "UPDATE products SET p_id=?, p_name=?, innovator_name=?, initial_price=?, stock_amount=?";
+			String sql = "UPDATE products SET p_id=?, p_name=?, innovator_name=?, initial_price=?, stock_amount=?, product_category=? ";
 			
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,p_id);
@@ -81,6 +82,7 @@ public class Product {
 			ps.setString(3, innovator_name);
             ps.setInt(3,initial_price);
             ps.setInt(4,stock_amount);
+            ps.setString(5,product_category);
 			ps.setInt(8,p_id);
 			
 			ps.execute();

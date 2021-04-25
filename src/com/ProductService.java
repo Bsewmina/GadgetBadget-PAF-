@@ -39,13 +39,13 @@ public class ProductService {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String createProduct(@FormParam ("p_name") String p_name, @FormParam ("innovator_name") String innovator_name,
-							@FormParam ("initial_price") int initial_price, @FormParam ("stock_amount") int stock_amount)
+							@FormParam ("initial_price") int initial_price, @FormParam ("stock_amount") int stock_amount, @FormParam ("product_category") String product_category)
 
 	{
 		//= new Product()
 		obj_Pro = new Product();
 		
-		String result = obj_Pro.createProduct(p_name, innovator_name, initial_price, stock_amount);
+		String result = obj_Pro.createProduct(p_name, innovator_name, initial_price, stock_amount, product_category);
 		return result;
 	}
 	
@@ -64,9 +64,10 @@ public class ProductService {
 		String innovator_name 	= Pro_JasonObj.get("innovator_name").getAsString();
 		int initial_price 		= Pro_JasonObj.get("initial_price").getAsInt();
 		int stock_amount 		= Pro_JasonObj.get("stock_amount").getAsInt();
+		String product_category = Pro_JasonObj.get("product_category").getAsString();
 		
 		
-		String result = Pro_JasonObj.updateProduct(p_id, p_name, innovator_name, initial_price, stock_amount);
+		String result = Pro_JasonObj.updateProduct(p_id, p_name, innovator_name, initial_price, stock_amount, product_category);
 		return result;
 	}
 	
